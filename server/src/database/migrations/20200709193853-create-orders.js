@@ -10,7 +10,6 @@ module.exports = {
       promotion: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false,
       },
       half_pizza: {
         type: Sequelize.BOOLEAN,
@@ -18,21 +17,21 @@ module.exports = {
       },
       flavour_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'flavour', key: 'id' },
+        references: { model: 'flavours', key: 'id' },
         onUpdate: 'SET NULL',
         onDelete: 'SET NULL',
         allowNull: true,
       },
       border_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'border', key: 'id' },
+        references: { model: 'borders', key: 'id' },
         onUpdate: 'SET NULL',
         onDelete: 'SET NULL',
         allowNull: true,
       },
       size_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'size', key: 'id' },
+        references: { model: 'sizes', key: 'id' },
         onUpdate: 'SET NULL',
         onDelete: 'SET NULL',
         allowNull: true,
@@ -46,10 +45,18 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'pastas', key: 'id' },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'SET NULL',
         onDelete: 'SET NULL',
         allowNull: true,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },

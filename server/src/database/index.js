@@ -1,9 +1,15 @@
 import Sequelize from 'sequelize';
 
 import User from '../app/models/User';
+import Border from '../app/models/Border';
+import Flavour from '../app/models/Flavour';
+import Pasta from '../app/models/Pasta';
+import Size from '../app/models/Size';
+import Order from '../app/models/Order';
+
 import dbConfig from '../configs/database';
 
-const models = [User];
+const models = [User, Border, Flavour, Pasta, Size, Order];
 
 class Database {
   constructor() {

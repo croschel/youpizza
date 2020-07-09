@@ -4,9 +4,13 @@ module.exports = {
     [
       {
         size: 'sem recheio',
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         size: 'recheada',
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     ],
     {},
