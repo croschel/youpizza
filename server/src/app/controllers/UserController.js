@@ -33,6 +33,37 @@ class UserController {
       id, name, email, endereco, points,
     });
   }
+
+  async update(req, res) {
+    const schema = yup.object().shape({
+      name: yup.string(),
+      email: yup.string().email(),
+      endereco: yup.string(),
+      points: yup.number(),
+      password: yup.string().min(6),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ message: 'Validation Error' });
+    }
+
+    const userLogged = await User.findByPk(req.userId);
+
+    if (userLogged.email !== req.body.email) {
+      const userExists = await User.findOne({ where: { email: req.body.email } });
+
+      if (userExists) { // verify if exists an user with this email on DB
+        return res.status(400).json({ message: 'User already exists!' });
+      }
+    }
+
+    const {
+      id, name, email, endereco, points,
+    } = await User.update(req.body);
+    return res.json({
+      id, name, email, endereco, points,
+    });
+  }
 }
 
 export default new UserController();
