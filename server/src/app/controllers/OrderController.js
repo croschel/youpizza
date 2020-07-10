@@ -5,6 +5,7 @@ import Flavour from '../models/Flavour';
 import Pasta from '../models/Pasta';
 import Size from '../models/Size';
 import Promotion from '../models/Promotion';
+import { formatDay } from '../../util/formatDate';
 
 class OrderController {
   async store(req, res) {
@@ -22,22 +23,31 @@ class OrderController {
           id: req.userId,
         },
       });
-      const userPointsUpdated = await userLogged.update({ points: userLogged.points + 10 });
+
+      // update points on logged user
+      await userLogged.update({ points: userLogged.points + 10 });
       console.log('Você ganhou dez pontos');
 
-      const data = new Date();
-      // if()
+      const date = new Date();
+      const day = formatDay(date);
+
+      const promotion = await Promotion.findOne({
+        where: {
+          dia_referencia: day.toLowerCase(),
+        },
+      });
 
       const ordered = await Order.create({
         promotion: order.promotion,
         half_pizza: false,
-        flavour_id: 1,
-        border_id: 2,
-        size_id: order.size_id,
-        pasta_id: order.pasta_id,
+        total_price: promotion.price,
+        flavour_id: promotion.id,
+        border_id: 1,
+        size_id: 2,
+        pasta_id: 1,
         user_id: req.userId,
       });
-      return res.json(userPointsUpdated);
+      return res.json(ordered);
     }
 
     const ordered = await Order.create(
