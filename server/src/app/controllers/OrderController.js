@@ -4,10 +4,17 @@ import Border from '../models/Border';
 import Flavour from '../models/Flavour';
 import Pasta from '../models/Pasta';
 import Size from '../models/Size';
+import Promotion from '../models/Promotion';
 
 class OrderController {
   async store(req, res) {
     const order = req.body;
+
+    // find all prices
+    const flavour = await Flavour.findByPk(order.flavour_id);
+    const border = await Border.findByPk(order.border_id);
+    const size = await Size.findByPk(order.size_id);
+    const pasta = await Pasta.findByPk(order.pasta_id);
 
     if (order.promotion === true) {
       const userLogged = await User.findOne({
@@ -32,22 +39,12 @@ class OrderController {
       });
       return res.json(userPointsUpdated);
     }
-    /* if (order.half_pizza === true) {
-      const ordered = await Order.create({
-        promotion: order.promotion,
-        half_pizza: order.half_pizza,
-        flavour_id: order.flavour_id,
-        border_id: order.border_id,
-        size_id: order.size_id,
-        pasta_id: order.pasta_id,
-        user_id: order.user_id,
-      }); */
 
-    console.log(order);
     const ordered = await Order.create(
       {
         promotion: order.promotion,
         half_pizza: false,
+        total_price: flavour.price + border.price + size.price + pasta.price,
         flavour_id: order.flavour_id,
         border_id: order.border_id,
         size_id: order.size_id,
@@ -55,7 +52,7 @@ class OrderController {
         user_id: req.userId,
       },
     );
-    console.log(ordered);
+
     return res.json(ordered);
   }
 

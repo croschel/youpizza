@@ -5,6 +5,7 @@ module.exports = {
       {
         title: 'mussarela',
         description: 'queijo parmesão e tomate',
+        price: 18,
         dia_referencia: 'segunda',
         created_at: new Date(),
         updated_at: new Date(),
@@ -12,6 +13,7 @@ module.exports = {
       {
         title: 'calabresa',
         description: 'calabresa importada',
+        price: 18,
         dia_referencia: 'terça',
         created_at: new Date(),
         updated_at: new Date(),
@@ -19,6 +21,7 @@ module.exports = {
       {
         title: 'lombo',
         description: 'lombo suíno com lascas de queijo',
+        price: 20,
         dia_referencia: 'quarta',
         created_at: new Date(),
         updated_at: new Date(),
@@ -26,6 +29,7 @@ module.exports = {
       {
         title: 'file mignon',
         description: 'filé mignon com queijo brie',
+        price: 28,
         dia_referencia: 'quinta',
         created_at: new Date(),
         updated_at: new Date(),
@@ -33,6 +37,7 @@ module.exports = {
       {
         title: 'frango com catupiri',
         description: 'frango com catupiri importado',
+        price: 22,
         dia_referencia: 'sexta',
         created_at: new Date(),
         updated_at: new Date(),
@@ -40,6 +45,7 @@ module.exports = {
       {
         title: 'portuguesa',
         description: 'tomate, presunto, mussarela e cebola',
+        price: 20,
         dia_referencia: 'sábado',
         created_at: new Date(),
         updated_at: new Date(),
@@ -47,6 +53,7 @@ module.exports = {
       {
         title: 'corn e bacon',
         description: 'milho, bacon e mussarela com parmesão',
+        price: 25,
         dia_referencia: 'domingo',
         created_at: new Date(),
         updated_at: new Date(),

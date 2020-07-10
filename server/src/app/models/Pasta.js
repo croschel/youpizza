@@ -5,6 +5,7 @@ class Pasta extends Model {
     super.init(
       {
         thickness: Sequelize.STRING,
+        price: Sequelize.INTEGER,
       },
       {
         sequelize,

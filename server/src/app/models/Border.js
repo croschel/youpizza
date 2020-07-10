@@ -5,6 +5,7 @@ class Border extends Model {
     super.init(
       {
         size: Sequelize.STRING,
+        price: Sequelize.INTEGER,
       },
       {
         sequelize,

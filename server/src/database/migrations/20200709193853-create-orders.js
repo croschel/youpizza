@@ -15,6 +15,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      total_price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       flavour_id: {
         type: Sequelize.INTEGER,
         references: { model: 'flavours', key: 'id' },
@@ -38,7 +42,7 @@ module.exports = {
       },
       pasta_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'pastas', key: 'id' },
+        references: { model: 'pasta', key: 'id' },
         onUpdate: 'SET NULL',
         onDelete: 'SET NULL',
         allowNull: true,

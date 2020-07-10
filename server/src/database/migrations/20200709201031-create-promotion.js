@@ -15,6 +15,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       dia_referencia: {
         type: Sequelize.STRING,
         allowNull: false,

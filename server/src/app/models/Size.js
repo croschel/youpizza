@@ -5,6 +5,7 @@ class Size extends Model {
     super.init(
       {
         diameter: Sequelize.STRING,
+        price: Sequelize.INTEGER,
       },
       {
         sequelize,

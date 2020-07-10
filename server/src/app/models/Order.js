@@ -6,6 +6,7 @@ class Order extends Model {
       {
         promotion: Sequelize.BOOLEAN,
         half_pizza: Sequelize.BOOLEAN,
+        total_price: Sequelize.INTEGER,
       },
       {
         sequelize,

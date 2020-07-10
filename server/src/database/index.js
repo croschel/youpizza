@@ -5,11 +5,12 @@ import Border from '../app/models/Border';
 import Flavour from '../app/models/Flavour';
 import Pasta from '../app/models/Pasta';
 import Size from '../app/models/Size';
+import Promotion from '../app/models/Promotion';
 import Order from '../app/models/Order';
 
 import dbConfig from '../configs/database';
 
-const models = [User, Border, Flavour, Pasta, Size, Order];
+const models = [User, Border, Flavour, Pasta, Size, Promotion, Order];
 
 class Database {
   constructor() {

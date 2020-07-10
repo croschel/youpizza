@@ -1,11 +1,12 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Flavour extends Model {
+class Promotion extends Model {
   static init(sequelize) {
     super.init(
       {
         title: Sequelize.STRING,
         description: Sequelize.STRING,
+        dia_referencia: Sequelize.STRING,
         price: Sequelize.INTEGER,
       },
       {
@@ -16,4 +17,4 @@ class Flavour extends Model {
   }
 }
 
-export default Flavour;
+export default Promotion;
