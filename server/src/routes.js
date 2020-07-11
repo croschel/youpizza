@@ -22,6 +22,7 @@ routes.use(authMiddleware);
 
 // Users Routes
 routes.get('/users', UserController.index);
+routes.get('/users/:id', UserController.show);
 routes.put('/users', UserController.update);
 
 // Orders Routes
@@ -38,7 +39,8 @@ routes.get('/border/:id', BorderController.show);
 routes.get('/sizes', SizeController.index);
 routes.get('/size/:id', SizeController.show);
 // Flavour Routes
-routes.get('/flavour', FlavourController.index);
+routes.get('/flavours', FlavourController.index);
+routes.get('/flavour/:id', FlavourController.show);
 // Promo Routes
 routes.get('/promotions', PromotionController.index);
 routes.get('/promotion', PromotionController.show);

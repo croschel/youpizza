@@ -7,6 +7,12 @@ class UserController {
     return res.json(users);
   }
 
+  async show(req, res) {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    return res.json(user);
+  }
+
   async store(req, res) {
     const schema = yup.object().shape({
       name: yup.string().required(),

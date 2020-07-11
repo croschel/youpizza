@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+
 import history from '~/services/history';
 import api from '~/services/api';
+
 import { Container, Content, PromoBox, NormalBox } from './styles';
 
 function Dashboard() {
@@ -11,9 +13,10 @@ function Dashboard() {
   const [flavours, setFlavours] = useState([]);
 
 
+
   useEffect(() => {
     async function loadPromo() {
-      const response = await api.get('/promotion');
+      const response = await api.get('promotion');
       setDaypromo(response.data);
     }
     loadPromo();
@@ -21,31 +24,61 @@ function Dashboard() {
 
   useEffect(() => {
     async function loadFlavours() {
-      const response = await api.get('/flavour');
+      const response = await api.get('flavours');
       setFlavours(response.data);
     }
     loadFlavours();
   }, []);
 
-  async function handleSubmitPromo() {
-    console.tron.log(true);
-    try {
-      await api.post('orders', {
-        promotion: promo
-      });
-      toast.success('Você acabou de ganhar 10 PONTOS!!!')
-      history.push('/finish', { pizza });
-    } catch (err) {
-      toast.error('Pedido não finalizado!');
+  async function handleSubmitOrder() {
+    if (pizza > 0) {
+      const response = await api.get(`flavour/${pizza}`)
+      toast.success(`Sabor ${response.data.title} selecionado!`)
+      history.push('border', { flavor: response.data })
+    } else {
+      toast.error('Selecione algum sabor ou escolha uma pizza promocional');
+      return;
     }
   }
+
+  async function handleSubmitPromo() {
+    try {
+      await api.post('orders', {
+        promotion: true
+      });
+
+      const flavor = {
+        title: daypromo.title,
+        description: daypromo.description,
+      };
+      const border = {
+        size: 'sem recheio',
+      };
+      const pasta = {
+        thickness: 'fina',
+      };
+      const size = {
+        diameter: 'grande'
+      };
+      const price = daypromo.price;
+
+      toast.success('Você acabou de ganhar 10 PONTOS!!! \n Seus pontos serão creditados ao retornar ao dashboard');
+
+      history.push('/finish', { flavor, border, size, pasta, price });
+
+    } catch (err) {
+      toast.error('Pedido não finalizado!');
+      return;
+    }
+  }
+
   return (
     <Container>
       <Content>
         <h1>SELECIONE SUA PIZZA</h1>
         <div id="select-promopizza">
           <label htmlFor="promopizza">Promoção do dia</label>
-          <select name="promopizza" value={promo} onChange={e => setPromo(e.target.value)}>
+          <select name="promopizza" value={promo} onChange={(e) => setPromo(e.target.value)}>
             <option value="" selected="selected disabled hidden">Selecione</option>
             <option value={true}>{daypromo.title}</option>
             <option value={false}>Não</option>
@@ -73,7 +106,7 @@ function Dashboard() {
               ))}
             </select>
           </div>
-          <button onClick={() => { }}>
+          <button onClick={handleSubmitOrder}>
             Avançar
             </button>
         </NormalBox>
