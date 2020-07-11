@@ -6,6 +6,7 @@ import PastaController from './app/controllers/PastaController';
 import SizeController from './app/controllers/SizeController';
 import BorderController from './app/controllers/BorderController';
 import FlavourController from './app/controllers/FlavourController';
+import PromotionController from './app/controllers/PromotionController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -28,12 +29,18 @@ routes.post('/orders', OrderController.store);
 routes.get('/orders', OrderController.index);
 
 // Pasta Routes
-routes.get('/pasta', PastaController.index);
+routes.get('/pastas', PastaController.index);
+routes.get('/pasta/:id', PastaController.show);
 // Border Routes
-routes.get('/border', BorderController.index);
+routes.get('/borders', BorderController.index);
+routes.get('/border/:id', BorderController.show);
 // Size Routes
-routes.get('/size', SizeController.index);
+routes.get('/sizes', SizeController.index);
+routes.get('/size/:id', SizeController.show);
 // Flavour Routes
 routes.get('/flavour', FlavourController.index);
+// Promo Routes
+routes.get('/promotions', PromotionController.index);
+routes.get('/promotion', PromotionController.show);
 
 export default routes;

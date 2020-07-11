@@ -23,6 +23,27 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      border_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'borders', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: true,
+      },
+      size_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'sizes', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: true,
+      },
+      pasta_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'pasta', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: true,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

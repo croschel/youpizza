@@ -15,6 +15,12 @@ class Promotion extends Model {
     );
     return this;
   }
+
+  static associate(models) {
+    this.belongsTo(models.Border, { foreignKey: 'border_id' });
+    this.belongsTo(models.Pasta, { foreignKey: 'pasta_id' });
+    this.belongsTo(models.Size, { foreignKey: 'size_id' });
+  }
 }
 
 export default Promotion;

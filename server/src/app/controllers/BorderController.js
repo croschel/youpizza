@@ -5,6 +5,13 @@ class BorderController {
     const border = await Border.findAll();
     return res.json(border);
   }
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const border = await Border.findByPk(id);
+    return res.json(border);
+  }
 }
 
 export default new BorderController();
