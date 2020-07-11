@@ -21,7 +21,7 @@ div{
   align-items: center;
   margin: 20px auto 30px auto;
   width: 520px;
-  height: 670px;
+  height: 80%;
   border-radius: 27px;
   padding: 5px;
 

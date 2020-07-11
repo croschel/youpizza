@@ -11,7 +11,7 @@ import Routes from './routes';
 import history from '~/services/history';
 import { store, persistor } from './store';
 import GlobalStyles from '~/styles/global';
-import '@fortawesome/fontawesome-svg-core/styles.css';
+
 
 function App() {
   return (

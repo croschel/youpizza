@@ -5,9 +5,8 @@ import * as Yup from 'yup';
 import youpizza from '~/assets/youpizza.png';
 import { Form, Input } from '@rocketseat/unform';
 
-// import { signUpRequest } from '~/store/modules/auth/actions';
+import { signUpRequest } from '~/store/modules/auth/actions';
 import { Container } from './styles';
-
 
 function SignUp() {
   //Dispatch Actions
@@ -17,13 +16,13 @@ function SignUp() {
   const schema = Yup.object().shape({
     name: Yup.string().required("Digite um nome", "color: red"),
     email: Yup.string().required("Digite um email válido", "color: red"),
-    endereco: Yup.string().required("Digite um endereço válido", "color: red"),
+    address: Yup.string().required("Digite um endereço válido", "color: red"),
     password: Yup.string().required("Coloque uma senha válida", "color: red"),
   })
 
-  function handleSubmit({ email, password }) {
+  function handleSubmit({ name, email, address, password }) {
 
-    //dispatch(signUpRequest(email, password));
+    dispatch(signUpRequest(name, email, address, password));
   }
 
   return (

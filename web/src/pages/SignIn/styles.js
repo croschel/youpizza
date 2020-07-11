@@ -9,9 +9,20 @@ export const Container = styled.div`
   font-size: 54px;
   color: #D52222;
   text-shadow: 4px 3px 19px #fff;
-}
+  }
+  #return {
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    a{
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
 
-div{
+#content{
   background: #DBB6B6;
   display: flex;
   flex-direction: column;
